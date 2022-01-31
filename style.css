@@ -1,0 +1,17 @@
+html,body{
+    margin:0;
+    padding: 0;
+}
+.header{
+    width: 100%;
+    
+    height: 15vh;
+    background-color: cadetblue;
+}
+.heading{
+    margin:0;
+    padding:1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    
+}
