@@ -16,7 +16,7 @@
 <body>
     <form type="get" name="emiform" class=" ml-sm-2  d-flex flex-column justify-content-center align-items-center"
         style="height: 28rem;">
-        <h2 class="mt-2">EMI Calculator</h2>
+        <h2 class="mt-2">Application Form</h2>
         <div class=" w-50   mt-5 d-sm-flex flex-column justify-content-center align-items-center">
 
             <div class="input-group  mb-3">
@@ -66,20 +66,19 @@
         }
         var apply = (name, age, atype, branch, number) => {
             custList.push(new Customer(name, age, atype, branch, number));
-            console.log(custList)
         }
         var printNames = (custObj) => {
-            console.log("customer name:" + custObj.name);
-            console.log("customer account type:" + custObj.type);
-            console.log("------------------------------------------------");
+            document.write("customer name:" + custObj.name+"</br>")
+            document.write("customer name:" + custObj.type +"</br>")
+            console.log("------------------------------------------------"+"</br>");
         }
         var printAllDetails=(custObj)=>{
-            console.log("customer name:" + custObj.name);
-            console.log("customer age:" + custObj.age);
-            console.log("customer account type:" + custObj.type);
-            console.log("customer branch:" + custObj.branch);
-            console.log("customer Mobile Number:" + custObj.number);
-            console.log("----------------------------------------------");
+            document.write("customer name:" + custObj.name +"</br>");
+            document.write("customer age:" + custObj.age+"</br>");
+            document.write("customer account type:" + custObj.type+"</br>");
+            document.write("customer branch:" + custObj.branch+"</br>");
+            document.write("customer Mobile Number:" + custObj.number+"</br>");
+            document.write("----------------------------------------------"+"</br>");
         }
         var displayNames = () => {
             custList.forEach(printNames)
@@ -87,7 +86,6 @@
         var displayCustomerDetails=()=>{
             custList.forEach(printAllDetails)
         }
-
 
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
