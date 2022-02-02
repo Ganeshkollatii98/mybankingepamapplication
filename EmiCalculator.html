@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <title>MY BANK</title>
+
+</head>
+
+<body>
+    <form type="get" name="emiform" class=" ml-sm-2  d-flex flex-column justify-content-center align-items-center"
+        style="height: 28rem;">
+        <h2 class="mt-2">EMI Calculator</h2>
+        <div class=" w-50   mt-5 d-sm-flex flex-column justify-content-center align-items-center">
+
+            <div class="input-group  mb-3">
+                <span class="input-group-text px-3">Applicant Name</span>
+                <input type="text" name="aname" class="form-control" placeholder="Enter Applicant Name">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Loan Amount</span>
+                <input type="text" name="amount" class="form-control" placeholder="Enter Loan Amount">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Loan type</span>
+                <select name="loan" onchange="selectType(loan.value,roi,duration)">
+                    <option>Loan type</option>
+                    <option value="car">car</option>
+                    <option value="home">home</option>
+                    <option value="personal">personal</option>
+                </select>
+
+            </div>
+
+
+
+            <div class="input-group mb-3 ">
+                <span class="input-group-text">Duration</span>
+                <input type="text"  name="duration" class="form-control"
+                    placeholder="Enter Duration">
+            </div>
+
+            <div class="input-group mb-3 ">
+                <span class="input-group-text">Rate Of Intrest</span>
+                <input type="text" name="roi" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">EMI</span>
+                <input type="text" name="emi" class="form-control" readonly>
+            </div>
+
+            <div class="mt-3 w-100 d-flex justify-content-center">
+                <input type="button" class="btn btn-primary p-2 mx-4" value="CALCULATE"
+                    onclick="calculateEmi(loan.value,amount,duration,roi,emi)">
+                <input type="reset" class="btn btn-danger  p-2 " value="RESET">
+            </div>
+        </div>
+
+    </form>
+    <script>
+        function selectType(type, roi, duration) {
+
+            if (type == "car") {
+                roi.value = 0.09;
+            }
+            else if (type == "home") {
+                roi.value = 0.07;
+            }
+            else {
+                roi.value = 0.12;
+            }
+        }
+        function calculateEmi(loanType, amount, duration, roi, emi) {
+            console.log(parseInt(duration.value)>50)
+            if (loanType === "car" && parseInt(duration.value) > 7) {
+                alert("EMI duration must be less then 7")
+
+            }
+            else if (loanType === "home" && parseInt(duration.value) > 25) {
+                alert("EMI duration must be less then 25")
+            }
+            else if (loanType === "personal" && parseInt(duration.value) > 5) {
+                alert("EMI duration must be less then 5")
+            }
+            else {
+                var months = parseInt(duration.value) * 12;
+                var overAllAmount = parseInt(amount.value) + (parseInt(amount.value) * parseFloat(roi.value) * parseInt(duration.value));
+                emi.value = overAllAmount / months;
+            }
+
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
